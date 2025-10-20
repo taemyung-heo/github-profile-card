@@ -83,8 +83,8 @@ uvx --from git+https://github.com/github/spec-kit.git specify init github-profil
 1. **AI assist**: `Claude Code` 선택
 2. **Script**: `Shell Script` 선택 또는 환경에 맞게 선택
 
-![setup01](https://github.com/taemyung-heo/github-profile-card/raw/main/009_setup.png)
-![setup02](https://github.com/taemyung-heo/github-profile-card/raw/main/010_setup.png)
+![setup01](https://github.com/taemyung-heo/github-profile-card/raw/main/images/009_setup.png)
+![setup02](https://github.com/taemyung-heo/github-profile-card/raw/main/images/010_setup.png)
 
 명령어 실행이 완료되면, VS Code(또는 Cursor)에서 생성된 프로젝트 폴더를 열어주세요.
 
