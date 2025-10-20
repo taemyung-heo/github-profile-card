@@ -1,0 +1,231 @@
+openapi: 3.0.3
+info:
+  title: GitHub REST API (사용자 프로필 조회용)
+  description: |
+    GitHub 프로필 카드 조회 기능에서 사용하는 GitHub REST API의 일부분입니다.
+
+    **참고**: 이것은 GitHub의 전체 API가 아니라 본 프로젝트에서 사용하는 엔드포인트만 문서화한 것입니다.
+
+    **공식 문서**: https://docs.github.com/en/rest
+  version: v3
+  contact:
+    name: GitHub API Support
+    url: https://support.github.com/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.github.com
+    description: GitHub REST API v3 프로덕션 서버
+
+tags:
+  - name: users
+    description: GitHub 사용자 정보 조회
+
+paths:
+  /users/{username}:
+    get:
+      summary: 특정 GitHub 사용자 정보 조회
+      description: |
+        GitHub 사용자 이름(login)으로 공개 프로필 정보를 조회합니다.
+
+        **Rate Limiting**:
+        - 비인증 요청: 시간당 60회
+        - 인증 요청: 시간당 5000회
+
+        **Timeout**: 본 프로젝트에서는 클라이언트 측에서 3초 타임아웃 적용
+      operationId: getUser
+      tags:
+        - users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: GitHub 사용자 이름 (login)
+          schema:
+            type: string
+            pattern: '^[a-zA-Z0-9-]+$'
+            minLength: 1
+            maxLength: 39
+            example: octocat
+      responses:
+        '200':
+          description: 성공적으로 사용자 정보를 조회함
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubUser'
+              examples:
+                typical_user:
+                  summary: 일반적인 사용자 (모든 필드 설정됨)
+                  value:
+                    login: octocat
+                    id: 583231
+                    name: The Octocat
+                    avatar_url: https://avatars.githubusercontent.com/u/583231?v=4
+                    bio: GitHub mascot
+                    followers: 5000
+                    following: 10
+                    public_repos: 8
+                    html_url: https://github.com/octocat
+
+                user_without_name:
+                  summary: 이름을 설정하지 않은 사용자
+                  value:
+                    login: someuser
+                    id: 123456
+                    name: null
+                    avatar_url: https://avatars.githubusercontent.com/u/123456?v=4
+                    bio: Developer
+                    followers: 100
+                    following: 50
+                    public_repos: 20
+                    html_url: https://github.com/someuser
+
+                user_without_bio:
+                  summary: 자기소개를 설정하지 않은 사용자
+                  value:
+                    login: anotheruser
+                    id: 789012
+                    name: Another User
+                    avatar_url: https://avatars.githubusercontent.com/u/789012?v=4
+                    bio: null
+                    followers: 200
+                    following: 30
+                    public_repos: 15
+                    html_url: https://github.com/anotheruser
+
+        '404':
+          description: 사용자를 찾을 수 없음
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubError'
+              example:
+                message: Not Found
+                documentation_url: https://docs.github.com/rest/reference/users#get-a-user
+
+        '403':
+          description: API Rate Limit 초과
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubRateLimitError'
+              example:
+                message: API rate limit exceeded for xxx.xxx.xxx.xxx. (But here's the good news you have reset time...)
+                documentation_url: https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting
+
+        '500':
+          description: GitHub 서버 오류
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitHubError'
+              example:
+                message: Internal Server Error
+                documentation_url: https://docs.github.com/rest
+
+components:
+  schemas:
+    GitHubUser:
+      type: object
+      required:
+        - login
+        - id
+        - avatar_url
+        - html_url
+        - followers
+        - following
+        - public_repos
+      properties:
+        login:
+          type: string
+          description: GitHub 로그인 아이디
+          example: octocat
+
+        id:
+          type: integer
+          description: GitHub 사용자 고유 ID (본 프로젝트에서 사용하지 않음)
+          example: 583231
+
+        name:
+          type: string
+          nullable: true
+          description: 사용자 이름 (설정하지 않은 경우 null)
+          example: The Octocat
+
+        avatar_url:
+          type: string
+          format: uri
+          description: 프로필 이미지 URL (항상 HTTPS)
+          example: https://avatars.githubusercontent.com/u/583231?v=4
+
+        bio:
+          type: string
+          nullable: true
+          description: 자기소개 (설정하지 않은 경우 null)
+          example: GitHub mascot
+
+        followers:
+          type: integer
+          minimum: 0
+          description: 팔로워 수
+          example: 5000
+
+        following:
+          type: integer
+          minimum: 0
+          description: 팔로잉 수
+          example: 10
+
+        public_repos:
+          type: integer
+          minimum: 0
+          description: 공개 레포지토리 개수
+          example: 8
+
+        html_url:
+          type: string
+          format: uri
+          description: GitHub 프로필 페이지 URL
+          example: https://github.com/octocat
+
+    GitHubError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: 오류 메시지
+          example: Not Found
+
+        documentation_url:
+          type: string
+          format: uri
+          description: GitHub API 문서 URL
+          example: https://docs.github.com/rest/reference/users#get-a-user
+
+    GitHubRateLimitError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Rate limit 오류 메시지
+          example: API rate limit exceeded
+
+        documentation_url:
+          type: string
+          format: uri
+          description: Rate limiting 문서 URL
+          example: https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        GitHub Personal Access Token을 사용한 인증 (선택적).
+
+        **본 프로젝트에서는 사용하지 않음** (비인증 요청으로 충분함).
+
+security: []  # 인증 불필요
