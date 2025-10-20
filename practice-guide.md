@@ -30,7 +30,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 자, 그럼 이제 이 강력한 도구로 우리의 첫 번째 프로젝트를 시작해볼까요?
 
 **오늘의 최종 목표:**
-![GitHub 프로필 카드 생성기 예시 이미지](images/001_final_result.png)
+![GitHub 프로필 카드 생성기 예시 이미지](https://github.com/taemyung-heo/github-profile-card/raw/main/images/001_final_result.png)
 *(실제 결과물은 스타일에 따라 다를 수 있습니다)*
 
 **[최종 결과물 GitHub Repository](https://github.com/taemyung-heo/github-profile-card)**
@@ -58,7 +58,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 /speckit.constitution  React, TypeScript, Tailwind CSS를 사용한 깃헙 프로필 카드 웹사이트 구축
 ````
 
-![constitution](images/002_constitution.png)
+![constitution](https://github.com/taemyung-heo/github-profile-card/raw/main/images/002_constitution.png)
 
 ✅ **확인:** 프로젝트 최상위 폴더에 `.specify/memory/constitution.md` 파일이 생성되었는지 확인하세요.
 
@@ -79,7 +79,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 - 공개 레포지토리 개수
 ```
 
-![specify](images/003_specify.png)
+![specify](https://github.com/taemyung-heo/github-profile-card/raw/main/images/003_specify.png)
 
 ✅ **확인:** `specs/001-github-profile-card/spec.md` 파일이 생성되고, 우리가 붙여넣은 내용이 잘 저장되었는지 확인하세요. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
@@ -93,7 +93,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 /speckit.clarify
 ```
 
-![clarify](images/004_clarify.png)
+![clarify](https://github.com/taemyung-heo/github-profile-card/raw/main/images/004_clarify.png)
 
 💡 **Tip:** AI가 "API 엔드포인트는 무엇을 사용할까요?" 라고 물으면 "GitHub의 공식 유저 API인 `https://api.github.com/users/` 를 사용해줘" 라고 답해주고, 스타일 관련 질문에는 "Tailwind CSS를 활용해 모던하고 깔끔한 스타일로 만들어줘" 와 같이 답변하면 좋습니다.
 
@@ -109,11 +109,11 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 /speckit.plan tailwind css는 3.x 버전 사용
 ```
 
-![plan](images/005_plan.png)
+![plan](https://github.com/taemyung-heo/github-profile-card/raw/main/images/005_plan.png)
 
 ✅ **확인:** `specs/001-github-profile-card` 디렉토리 밑에, `plan.md`, `research.md`, `data-model.md`, `quickstart.md` 등의 파일이 생성되었는지 확인하고, 파일을 열어 AI가 어떤 컴포넌트(`InputForm.tsx`, `ProfileCard.tsx` 등)와 파일 구조를 계획했는지 살펴보세요. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
-![plan result](images/006_plan_result.png)
+![plan result](https://github.com/taemyung-heo/github-profile-card/raw/main/images/006_plan_result.png)
 
 ## [실습단계]`tasks` - 할 일 목록 자동 생성하기
 
@@ -125,7 +125,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 /speckit.tasks
 ```
 
-![tasks](images/007_tasks.png)
+![tasks](https://github.com/taemyung-heo/github-profile-card/raw/main/images/007_tasks.png)
 
 ✅ **확인:** `specs/001-github-profile-card/tasks.md` 파일이 생성되었습니다. 파일을 열어 체크박스 형태로 생성된 할 일 목록을 확인하세요. 이제 우리는 이 목록을 따라 AI에게 구현을 지시할 것입니다. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
@@ -139,7 +139,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도(Blueprint)*
 /speckit.implement
 ```
 
-![implement](images/008_implement.png)
+![implement](https://github.com/taemyung-heo/github-profile-card/raw/main/images/008_implement.png)
 
 💻 **실습: 개발 서버 실행**
 
