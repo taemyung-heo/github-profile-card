@@ -205,4 +205,10 @@ npm run dev
 1. **오늘 배운 6-Step GitHub Spec Kit 워크플로우:** `constitution` → `spec` → `clarify` → `plan` → `tasks` → `implement`
 2. 이 워크플로우를 여러분의 실제 프로젝트에 어떻게 적용할 수 있을지 자유롭게 의견을 나눠봅시다.
 
+마지막으로 지피터스에서 운영하는 AI 스터디를 소개 드립니다.
+
+![aistudy_intro](https://github.com/taemyung-heo/github-profile-card/raw/main/images/aistudy_intro.png)
+
+[스터디 링크](https://www.gpters.org/ai-study-list)
+
 **수고 많으셨습니다!**
