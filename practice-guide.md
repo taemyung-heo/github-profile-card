@@ -44,11 +44,58 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 1. [ ] **VS Code (또는 Cursor)** 가 실행되어 있습니다.
 2. [ ] **Git**이 설치되어 있고, **GitHub 계정**에 로그인되어 있습니다.
 3. [ ] **Claude Code** 사용 환경이 준비되었습니다.
-4. [ ] VS Code에서 터미널을 열었습니다. (`View` > `Terminal` 또는 `Ctrl`+`\``)
+4. [ ] VS Code에서 터미널을 열었습니다.
 
 ---
 
-## [실습단계]`constitution` - 프로젝트의 규칙 정의하기
+## [실습단계]프로젝트 생성
+
+> GitHub Spec Kit을 사용하여 새로운 프로젝트를 생성하는 단계입니다. 프로젝트 디렉토리가 자동으로 생성되고, 필요한 설정 파일들이 초기화됩니다.
+
+### 1단계: uv 설치 확인 및 설치
+
+GitHub Spec Kit은 Python 기반 도구로, `uvx` 명령어를 사용합니다. 먼저 uv가 설치되어 있는지 확인하세요.
+
+```bash
+uv --version
+```
+
+만약 명령어를 찾을 수 없다는 오류가 나온다면, 아래 명령어로 환경에 맞게 설치하세요:
+
+```bash
+# Windows (PowerShell)
+irm https://astral.sh/uv/install.ps1 | iex
+
+# macOS (Homebrew)
+brew install uv
+```
+
+### 2단계: 프로젝트 생성
+
+💻 **실습:** 프로젝트를 생성하고 싶은 디렉토리로 이동한 후, 아래 명령어를 터미널에서 실행하세요.
+
+```bash
+uvx --from git+https://github.com/github/spec-kit.git specify init github-profile-card
+```
+
+실행 후 나타나는 질문들에 다음과 같이 답변하세요:
+
+1. **AI assist**: `Claude Code` 선택
+2. **Script**: `Shell Script` 선택 또는 환경에 맞게 선택
+
+![setup01](https://github.com/taemyung-heo/github-profile-card/raw/main/009_setup.png)
+![setup02](https://github.com/taemyung-heo/github-profile-card/raw/main/010_setup.png)
+
+명령어 실행이 완료되면, VS Code(또는 Cursor)에서 생성된 프로젝트 폴더를 열어주세요.
+
+```bash
+cd github-profile-card
+code .  # VS Code를 사용하는 경우
+```
+
+✅ **확인:** 프로젝트 폴더가 생성되고, `.claude/`, `.specify/` 디렉토리가 존재하는지 확인하세요. `.claude/` 디렉토리에는 GitHub Spec Kit 클로드 커맨드가 저장되어 있고, `.specify/` 디렉토리에 앞으로 우리가 작성할 명세와 계획들이 저장됩니다.
+
+## [실습단계]constitution : 프로젝트의 규칙 정의하기
 
 > AI에게 우리가 만들 프로젝트의 기술 스택, 코딩 스타일 등 **변경되지 않을 헌법**을 알려주는 단계입니다. 이 규칙을 기반으로 AI는 일관성 있는 코드를 생성합니다.
 
@@ -62,7 +109,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 
 ✅ **확인:** 프로젝트 최상위 폴더에 `.specify/memory/constitution.md` 파일이 생성되었는지 확인하세요.
 
-## [실습단계]`spec` - 만들고 싶은 기능 명세하기
+## [실습단계]spec : 만들고 싶은 기능 명세하기
 
 > AI에게 **무엇을 만들고 싶은지, 어떤 기능이 필요한지** 사람에게 설명하듯 구체적으로 알려주는 가장 중요한 단계입니다.
 
@@ -83,7 +130,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 
 ✅ **확인:** `specs/001-github-profile-card/spec.md` 파일이 생성되고, 우리가 붙여넣은 내용이 잘 저장되었는지 확인하세요. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
-## [실습단계]`clarify` - AI와 요구사항 구체화하기
+## [실습단계]clarify : AI와 요구사항 구체화하기
 
 > 우리가 작성한 명세(`spec`)를 AI가 읽고, **모호하거나 궁금한 점을 우리에게 다시 질문**하는 단계입니다. 이 과정을 통해 오해를 줄이고 명세를 더욱 탄탄하게 만듭니다.
 
@@ -99,7 +146,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 
 ✅ **확인:** `specs/001-github-profile-card/spec.md` 파일이 업데이트되어 AI와의 질의응답 내용이 추가된 것을 확인하세요. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
-## [실습단계]`plan` - 개발 계획 자동 수립하기
+## [실습단계]plan : 개발 계획 자동 수립하기
 
 > 명확해진 요구사항을 바탕으로, AI가 **Tech Lead**처럼 프로젝트의 전체적인 파일 구조와 컴포넌트 설계 등 **개발 계획 -설계도**를 수립하는 단계입니다.
 
@@ -115,7 +162,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 
 ![plan result](https://github.com/taemyung-heo/github-profile-card/raw/main/images/006_plan_result.png)
 
-## [실습단계]`tasks` - 할 일 목록 자동 생성하기
+## [실습단계]tasks : 할 일 목록 자동 생성하기
 
 > AI가 수립된 `plan`을 기반으로, 실제 개발에 필요한 **세부 작업 목록**을 자동으로 생성하는 단계입니다.
 
@@ -129,7 +176,7 @@ GitHub Spec Kit은 쉽게 말해, **AI를 위한 정교한 설계도 - Blueprint
 
 ✅ **확인:** `specs/001-github-profile-card/tasks.md` 파일이 생성되었습니다. 파일을 열어 체크박스 형태로 생성된 할 일 목록을 확인하세요. 이제 우리는 이 목록을 따라 AI에게 구현을 지시할 것입니다. 001-github-profile-card 디렉토리 이름은 다른 이름일 수 있습니다.
 
-## [실습단계]`implement` - AI에게 코드 구현 지시하기
+## [실습단계]implement : AI에게 코드 구현 지시하기
 
 > 드디어 AI가 실제 코드를 작성하는 단계입니다. `tasks.md`에 있는 작업을 확인해서 코드를 구현합니다.
 
@@ -151,7 +198,7 @@ npm run dev
 
 -----
 
-## [실습단계]회고 및 Q&A
+## [실습단계]회고 및 Q/A
 
 축하합니다! 여러분은 아이디어를 실제 작동하는 웹 애플리케이션으로 만들어냈습니다.
 
